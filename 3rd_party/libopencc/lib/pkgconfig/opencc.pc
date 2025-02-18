@@ -1,0 +1,11 @@
+prefix=/mnt/whisper_meloTTS.cpp/3rd_party/libopencc
+exec_prefix=${prefix}
+libdir=/mnt/whisper_meloTTS.cpp/3rd_party/libopencc/lib
+includedir=/mnt/whisper_meloTTS.cpp/3rd_party/libopencc/include
+
+Name: opencc
+Description: Open Chinese Convert
+Version: 1.1.9
+Requires:
+Libs: -L${libdir} -lopencc
+Cflags: -I${includedir}/opencc
