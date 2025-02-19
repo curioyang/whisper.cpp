@@ -79,11 +79,21 @@ public:
         return {.data=result, .shape=shape};
     }
 
+    Value get_result_tensor(int idx)
+    {
+        auto &it = this->results_[idx];
+        return std::move(it);
+    }
+
     template<class T>
     void set_input_tensor(tensor_info<T> &tensor, size_t idx)
     {
-        // auto input = ;
         inputs_.emplace_back(Value::CreateTensor<T>(runtime_manager_.get()->allocator().GetInfo(), tensor.data.data(), tensor.data.size(), tensor.shape.data(), tensor.shape.size()));
+    }
+
+    void set_input_tensor(Value &tensor, size_t idx)
+    {
+        inputs_.emplace_back(std::move(tensor));
     }
 
     std::pair<std::vector<long>, size_t> get_output_shape(int idx)

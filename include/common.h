@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include <limits>
 #include <vector>
 
 constexpr int WHISPER_N_MELS = 80;
@@ -19,7 +19,7 @@ constexpr int WHISPER_TRANSLATE = 50358;
 constexpr int WHISPER_TRANSCRIBE = 50359;
 constexpr int WHISPER_VOCAB_SIZE = 51865;
 constexpr int WHISPER_N_TEXT_CTX = 448;
-constexpr float NEG_INF = -INFINITY;
+constexpr float NEG_INF = -std::numeric_limits<float>::infinity();
 
 template <class T>
 struct tensor_info
