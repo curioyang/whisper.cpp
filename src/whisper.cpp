@@ -8,6 +8,8 @@
 // #include "audio.h"
 std::string language = "zh";
 
+using namespace whisper_ort;
+
 std::string whisper_get_sentence(std::string &models_dir, std::string &wav_path)
 {
 

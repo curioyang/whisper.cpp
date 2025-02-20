@@ -45,6 +45,17 @@ FILE(GLOB SRCS ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp)
 
 add_library(whisper STATIC ${SRCS})
 
+# 添加头文件路径
+target_include_directories(whisper INTERFACE
+ ${CMAKE_CURRENT_SOURCE_DIR}/3rd_party
+        ${NNCASE_PATH}/include
+        ${OPENCC_PATH}/include
+        ${ROSA_PATH}
+        ${AUDIOFILE_PATH}
+        ${ONNXRUNTIME_PATH}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
 target_link_directories(whisper PRIVATE ${OPENCC_PATH}/lib ${NNCASE_PATH}/lib)
 
 target_link_libraries(whisper PRIVATE onnxruntime dl m pthread  ${OPENCC_LIB} ${NNCASE_LIB})

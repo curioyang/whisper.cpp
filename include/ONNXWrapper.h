@@ -8,6 +8,7 @@
 
 using namespace Ort;
 
+namespace whisper_ort{
 class RuntimeManager {
 public:
     explicit RuntimeManager(const char *name) {
@@ -121,3 +122,4 @@ private:
 };
 
 
+}
