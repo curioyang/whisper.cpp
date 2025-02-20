@@ -3,7 +3,7 @@
 
 bool get_pos_ebd_tokens(std::string &path, std::vector<float> &positional_embedding, std::vector<std::string> &token_tables)
 {
-    std::string position_embd_path = "../data/tiny-positional_embedding.bin";
+    std::string position_embd_path = path + "/data/tiny-positional_embedding.bin";
     positional_embedding.resize(WHISPER_N_TEXT_CTX * WHISPER_N_TEXT_STATE /*tiny: 384; small: 768 */);
     FILE *fp = fopen(position_embd_path.c_str(), "rb");
     if (!fp)
@@ -14,7 +14,7 @@ bool get_pos_ebd_tokens(std::string &path, std::vector<float> &positional_embedd
     fread(positional_embedding.data(), sizeof(float), WHISPER_N_TEXT_CTX * WHISPER_N_TEXT_STATE, fp);
     fclose(fp);
 
-    std::string token_path = "../data/tiny-tokens.txt";
+    std::string token_path = path + "/data/tiny-tokens.txt";
     std::ifstream ifs(token_path);
     if (!ifs.is_open())
     {
