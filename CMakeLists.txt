@@ -71,6 +71,10 @@ export(EXPORT whisper_export
     FILE ${CMAKE_CURRENT_BINARY_DIR}/whisper_targets.cmake
 )
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rd_party/libopencc/share/opencc/t2s.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rd_party/libopencc/share/opencc/TSPhrases.ocd2 DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rd_party/libopencc/share/opencc/TSCharacters.ocd2 DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/demo.cpp)
 
 target_link_libraries(demo whisper)
