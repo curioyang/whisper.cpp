@@ -43,10 +43,12 @@ link_directories(
 
 FILE(GLOB SRCS ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp)
 
-add_library(whisper_melo STATIC ${SRCS})
+add_library(whisper STATIC ${SRCS})
 
-target_link_libraries(whisper_melo PUBLIC onnxruntime dl m pthread opencc Nncase.Runtime.Native)
+target_link_libraries(whisper PRIVATE onnxruntime dl m pthread opencc Nncase.Runtime.Native)
+
+target_include_directories(whisper PUBLIC include)
 
 add_executable(demo ${CMAKE_SOURCE_DIR}/demo/demo.cpp)
 
-target_link_libraries(demo whisper_melo)
+target_link_libraries(demo whisper)
